@@ -3,6 +3,7 @@ import { AccessTokenModel } from '../models/oauth/access-token.model';
 import { RefreshTokenModel } from '../models/oauth/refresh-token.model';
 import { ClientModel } from '../models/oauth/client.model';
 import { AuthorizationChallengeModel } from '../models/oauth/authorization-challenge.model';
+import { RoleModel } from '../models/role.model';
 
 export const DefaultConnectionModels = [
   UserModel,
@@ -10,4 +11,5 @@ export const DefaultConnectionModels = [
   AccessTokenModel,
   RefreshTokenModel,
   AuthorizationChallengeModel,
+  RoleModel
 ];
