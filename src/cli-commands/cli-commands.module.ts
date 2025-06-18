@@ -12,9 +12,11 @@ import { GenerateClientService } from './commands/oauth/generate-client/generate
 import { SeederService } from './commands/seeder/seeder.service';
 import { AuthModule } from '../auth/auth.module';
 import { CommonModule } from '../common/common.module';
+import { RolesModule } from '../roles/roles.module';
+import { RolesService } from './seeders/roles/roles.service';
 
 @Module({
-  imports: [CommandModule, AuthModule, CommonModule],
+  imports: [CommandModule, AuthModule, CommonModule, RolesModule],
   providers: [
     RouteListService,
     MakeMigrationService,
@@ -26,6 +28,7 @@ import { CommonModule } from '../common/common.module';
     GenerateOauthKeysService,
     GenerateClientService,
     SeederService,
+    RolesService
   ],
 })
 export class CliCommandsModule {}

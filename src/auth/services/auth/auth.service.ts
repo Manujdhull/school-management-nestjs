@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepoService } from '../../../user/services/user-repo/user-repo.service';
+import { UserRepoService } from '../../../user/services/user-repo.service';
 import { UserModel } from '../../../databases/models/user.model';
 import { HashEncryptService } from '../hash-encrypt/hash-encrypt.service';
 import { Session } from 'express-session';

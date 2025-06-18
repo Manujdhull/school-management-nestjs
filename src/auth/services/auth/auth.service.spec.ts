@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
-import { UserRepoService } from '../../../user/services/user-repo/user-repo.service';
+import { UserRepoService } from '../../../user/services/user-repo.service';
 import { HashEncryptService } from '../hash-encrypt/hash-encrypt.service';
 import { UserModel } from '../../../databases/models/user.model';
 import { ConfigService } from '@nestjs/config';

@@ -2,15 +2,18 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Argv, Command, Option } from 'nestjs-command';
 import { ModuleRef } from '@nestjs/core';
 import { Seeder, SeederConstruct } from '../../seeders/seeder';
+import { RolesService } from '../../seeders/roles/roles.service';
 
 interface ToSeedActions {
   all: boolean;
+  roles: boolean;
 }
 
 const AllowedKeys: (keyof ToSeedActions)[] = ['all'];
 
 const InputSeedersMapping: Record<keyof ToSeedActions, SeederConstruct[]> = {
   all: [],
+  roles: [],
 };
 
 @Injectable()
@@ -34,9 +37,19 @@ export class SeederService {
       description: 'Seeds everything',
     })
     value: any,
+    @Option({
+      name: 'roles',
+      type: 'boolean',
+      default: false,
+      description: 'Seeds roles',
+    })
+    roles: boolean,
     @Argv()
     argv: ToSeedActions,
   ) {
+    if (value || roles) {
+      SeederService.SeedMaps.push(RolesService);
+    }
     this.attachSeedersAsPerInputs(argv);
     for (const seeder of SeederService.SeedMaps) {
       this.log.log(`Seeding for ${seeder.name}`, 'Seeder');
