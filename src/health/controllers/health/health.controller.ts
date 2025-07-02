@@ -29,7 +29,7 @@ export class HealthController {
     @InjectConnection(ConnectionNames.DefaultConnection)
     private defaultConnection: Sequelize,
     private processMessaging: ProcessMessagingService,
-  ) {}
+  ) { }
 
   /**
    * Main health check action
