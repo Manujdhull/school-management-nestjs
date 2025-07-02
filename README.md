@@ -39,6 +39,11 @@ $ yarn install
 $ cp .env.example .env
 ```
 
+### Run the Migration
+```bash
+$ npm run app:command migration:run
+```
+
 ## Running the app
 
 ```bash
