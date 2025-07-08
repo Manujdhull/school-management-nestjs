@@ -5,6 +5,10 @@ import { ClientModel } from '../models/oauth/client.model';
 import { AuthorizationChallengeModel } from '../models/oauth/authorization-challenge.model';
 import { RoleModel } from '../models/role.model';
 import { UserRolesModel } from '../models/user-roles.model';
+import { SectionModel } from '../models/section.model';
+import { ClassModel } from '../models/class.model';
+import { SubjectModel } from '../models/subject.model';
+import { StudentClassSubjectModel } from '../models/student-class-subject.model';
 
 export const DefaultConnectionModels = [
   UserModel,
@@ -13,5 +17,9 @@ export const DefaultConnectionModels = [
   RefreshTokenModel,
   AuthorizationChallengeModel,
   RoleModel,
-  UserRolesModel
+  UserRolesModel,
+  SectionModel,
+  ClassModel,
+  SubjectModel,
+  StudentClassSubjectModel
 ];
