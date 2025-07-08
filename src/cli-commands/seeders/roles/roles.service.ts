@@ -24,13 +24,12 @@ export class RolesService extends Seeder {
       .then(() => true);
   }
 
-  private roles(): Pick<RoleModel, 'role_name' | 'display_name'>[] {
+  private roles(): Pick<RoleModel, 'name'>[] {
     return Object.values(RoleTypes).map<
-      Pick<RoleModel, 'id' | 'role_name' | 'display_name'>
+      Pick<RoleModel, 'id' | 'name'>
     >((roleType) => ({
       id: roleType.id,
-      role_name: roleType.name,
-      display_name: roleType.display_name,
+      name: roleType.name,
     }));
   }
 }

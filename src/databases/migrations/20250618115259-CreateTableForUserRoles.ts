@@ -12,7 +12,7 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    await queryInterface.createTable('user_entity_roles', {
+    await queryInterface.createTable('user_roles', {
       id: {
         type: DataType.BIGINT,
         autoIncrement: true,
@@ -40,7 +40,7 @@ module.exports = {
     });
 
     await queryInterface.addConstraint({
-      tableName: 'user_entity_roles'
+      tableName: 'user_roles'
     }, {
       type: 'foreign key',
       fields: ['user_id'],
@@ -54,7 +54,7 @@ module.exports = {
     });
 
     await queryInterface.addConstraint({
-      tableName: 'user_entity_roles'
+      tableName: 'user_roles'
     }, {
       type: 'foreign key',
       fields: ['role_id'],
@@ -76,6 +76,6 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
 
-    await queryInterface.dropTable('user_entity_roles');
+    await queryInterface.dropTable('user_roles');
   },
 };

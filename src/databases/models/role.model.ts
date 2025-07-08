@@ -1,36 +1,32 @@
-import { Column, HasMany, Table, Unique } from 'sequelize-typescript';
+import { Column, Table, Unique } from 'sequelize-typescript';
 import { BaseModel } from './base.model';
 
 export enum RoleTypeNames {
-  SuperAdmin = 'super_admin',
-  Admin = 'admin',
-  Participant = 'participant',
-  Viewer = 'viewer',
+  Principle = 'principle',
+  Teacher = 'teacher',
+  Student = 'student',
+  Parent = 'parent',
 }
 
 export const RoleTypes: Record<
   RoleTypeNames,
-  { id: number; name: RoleTypeNames; display_name: string }
+  { id: number; name: RoleTypeNames}
 > = {
-  [RoleTypeNames.SuperAdmin]: {
+  [RoleTypeNames.Principle]: {
     id: 1,
-    name: RoleTypeNames.SuperAdmin,
-    display_name: 'Super Admin',
+    name: RoleTypeNames.Principle,
   },
-  [RoleTypeNames.Admin]: {
+  [RoleTypeNames.Teacher]: {
     id: 2,
-    name: RoleTypeNames.Admin,
-    display_name: 'Admin',
+    name: RoleTypeNames.Teacher,
   },
-  [RoleTypeNames.Participant]: {
+  [RoleTypeNames.Student]: {
     id: 3,
-    name: RoleTypeNames.Participant,
-    display_name: 'Participant',
+    name: RoleTypeNames.Student,
   },
-  [RoleTypeNames.Viewer]: {
+  [RoleTypeNames.Parent]: {
     id: 4,
-    name: RoleTypeNames.Viewer,
-    display_name: 'Viewer',
+    name: RoleTypeNames.Parent,
   },
 };
 
@@ -38,8 +34,5 @@ export const RoleTypes: Record<
 export class RoleModel extends BaseModel<RoleModel> {
   @Unique
   @Column
-  public role_name: RoleTypeNames;
-
-  @Column
-  public display_name: string;
+  public name: RoleTypeNames;
 }
