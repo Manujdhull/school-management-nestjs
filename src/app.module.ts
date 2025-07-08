@@ -29,6 +29,9 @@ import { ClsModule } from 'nestjs-cls';
 import { Request, Response } from 'express';
 import { RolesModule } from './roles/roles.module';
 import { RegistrationModule } from './registration/registration.module';
+import { ClassesModule } from './classes/classes.module';
+import { SectionsModule } from './section/sections.module';
+import { SubjectsModule } from './subject/subjects.module';
 
 @Module({
   imports: [
@@ -67,7 +70,10 @@ import { RegistrationModule } from './registration/registration.module';
     UrlManagementModule,
     RolesModule,
     RegistrationModule,
-    UserModule
+    UserModule,
+    ClassesModule,
+    SectionsModule,
+    SubjectsModule
   ],
   controllers: [AppController],
   providers: [
