@@ -9,14 +9,15 @@ import { UserRepoService } from '../../user/services/user-repo.service';
 import { ResourceConversionInterceptor } from '../../common/interceptors/resource-conversion/resource-conversion.interceptor';
 import { ResourceMap } from '../../common/decorators/resource-map.decorator';
 import { RegistrationResource } from '../resources/registration.resource';
+import { RoleService } from '../../roles/services/role.service';
 
 
 @ApiTags('Registration')
 @Controller('registration')
 export class RegistrationController {
-  constructor(private userRepoService: UserRepoService) {}
+  constructor(private userRepoService: UserRepoService, private roleRepoService: RoleService) { }
 
-  @ApiOkResponse({type: RegistrationResource})
+  @ApiOkResponse({ type: RegistrationResource })
   @ResourceMap(RegistrationResource)
   @UseInterceptors(TransactionInterceptor, ResourceConversionInterceptor)
   @Post()
@@ -25,6 +26,9 @@ export class RegistrationController {
     @Body() userData: RegisterUserDto,
     @ReqTransaction() transaction?: Transaction,
   ): Promise<UserModel | void> {
-    return this.userRepoService.create(userData, transaction);
+    const role = await this.roleRepoService.findRoleWithName(userData.role);
+    return this.userRepoService.create(userData).then((user) => {
+      this.roleRepoService.assignRoleToUser(user, role);
+    });
   }
 }

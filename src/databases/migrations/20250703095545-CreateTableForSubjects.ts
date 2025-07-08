@@ -1,6 +1,5 @@
 'use strict';
 
-import { STRING } from 'sequelize';
 import { QueryInterface, Sequelize } from 'sequelize';
 import { DataType } from 'sequelize-typescript';
 
@@ -13,29 +12,17 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    await queryInterface.createTable('schools', {
+    await queryInterface.createTable('subjects', {
       id: {
         type: DataType.BIGINT,
-        primaryKey: true,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true,
       },
       name: {
         type: DataType.STRING,
         allowNull: false,
-      },
-      logo: {
-        type: DataType.STRING,
-        allowNull: true,
-        defaultValue: null
-      },
-      location: {
-        type: STRING,
-        allowNull: false,
-      },
-      school_mobile_number: {
-        type: DataType.STRING,
-        allowNull: false,
+        unique: true,
       },
       created_at: {
         type: DataType.DATE,
@@ -57,6 +44,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('schools');
+
+    await queryInterface.dropTable('subjects');
   },
 };

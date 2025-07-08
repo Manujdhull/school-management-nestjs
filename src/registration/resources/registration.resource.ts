@@ -1,8 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { BaseResource } from "../../common/resources/base.resource";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+import { RoleResource } from "../../roles/resources/role.resource";
 
-export class RegistrationResource extends BaseResource{
+export class RegistrationResource extends BaseResource {
     @ApiProperty()
     @Expose()
     public email: string;
@@ -15,11 +16,16 @@ export class RegistrationResource extends BaseResource{
     @Expose()
     public last_name: string;
 
-    @ApiProperty({nullable: true, type: Date})
+    @ApiProperty({ type: RoleResource, isArray: true })
+    @Expose()
+    @Type(() => RoleResource)
+    public role: RoleResource[];
+
+    @ApiProperty({ nullable: true, type: Date })
     @Expose()
     public verified_at: Date | null;
 
-    @ApiProperty({nullable: true, type: Date})
+    @ApiProperty({ nullable: true, type: Date })
     @Expose()
     public deleted_at: Date | null;
 }
