@@ -67,6 +67,7 @@ import { RegistrationModule } from './registration/registration.module';
     UrlManagementModule,
     RolesModule,
     RegistrationModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [

@@ -14,9 +14,11 @@ import { AuthModule } from '../auth/auth.module';
 import { CommonModule } from '../common/common.module';
 import { RolesModule } from '../roles/roles.module';
 import { RolesService } from './seeders/roles/roles.service';
+import { CreateSuperAdminService } from './commands/create-super-admin/create-super-admin.service';
+import { UserModule } from '../user/user.module';
 
 @Module({
-  imports: [CommandModule, AuthModule, CommonModule, RolesModule],
+  imports: [CommandModule, AuthModule, CommonModule, RolesModule, UserModule],
   providers: [
     RouteListService,
     MakeMigrationService,
@@ -28,7 +30,8 @@ import { RolesService } from './seeders/roles/roles.service';
     GenerateOauthKeysService,
     GenerateClientService,
     SeederService,
-    RolesService
+    RolesService,
+    CreateSuperAdminService
   ],
 })
-export class CliCommandsModule {}
+export class CliCommandsModule { }
