@@ -28,7 +28,7 @@ export class SectionService {
    * fetching section with the id
    * @param id 
    */
-  findOne(id: number): Promise<SectionModel | null> {
+  public findOne(id: number): Promise<SectionModel | null> {
     return this.sectionModel.findByPk(id, { rejectOnEmpty: true });
   }
 }

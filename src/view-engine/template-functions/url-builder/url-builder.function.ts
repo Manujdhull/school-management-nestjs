@@ -19,6 +19,7 @@ export class UrlBuilderFunction implements ExtendFunction<string> {
       queryParameters?: { [key: string]: string | number };
     },
   ): string {
+    console.log(this.urlBuilder.url(path, options));
     return this.urlBuilder.url(path, options);
   }
 }

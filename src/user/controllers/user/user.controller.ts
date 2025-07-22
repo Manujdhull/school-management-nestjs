@@ -1,18 +1,15 @@
-import { Controller, Get, Param, ParseIntPipe, Query, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Controller, Get, Post, Query, UseInterceptors } from "@nestjs/common";
 import { UserRepoService } from "../../services/user-repo.service";
-import { ApiBearerAuth, ApiHeader, ApiOkResponse, ApiQuery, ApiTags } from "@nestjs/swagger";
-import { AccessTokenGuard } from "../../../auth/guards/access-token/access-token.guard";
+import { ApiHeader, ApiOkResponse, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { ResourceConversionInterceptor } from "../../../common/interceptors/resource-conversion/resource-conversion.interceptor";
 import { TransactionInterceptor } from "../../../transaction-manager/interceptors/transaction/transaction.interceptor";
 import { AuthUser } from "../../../auth/decorators/auth-user.decorator";
 import { UserModel } from "../../../databases/models/user.model";
-import { ReqTransaction } from "../../../transaction-manager/decorators/transaction.decorator";
-import { Transaction } from "sequelize";
 import { SequelizePagination } from "../../../interfaces/sequelize-pagination.interface";
 import { UserResource } from "../../resources/user.resource";
 import { UsersPaginatedResource } from "../../resources/user-paginate.resource";
-import { log } from "node:console";
 import { ResourceMap } from "../../../common/decorators/resource-map.decorator";
+import { ForgetPasswordService } from "../../services/forget-password/forget-password.service";
 
 @ApiHeader({
   name: 'accept',
@@ -23,13 +20,13 @@ import { ResourceMap } from "../../../common/decorators/resource-map.decorator";
     enum: ['application/json'],
   },
 })
-@ApiBearerAuth()
-@UseGuards(AccessTokenGuard)
+// @ApiBearerAuth()
+// @UseGuards(AccessTokenGuard)
 @UseInterceptors(TransactionInterceptor, ResourceConversionInterceptor)
 @ApiTags('User Management')
 @Controller('users')
 export class UserController {
-  constructor(private readonly userRepoService: UserRepoService) { }
+  constructor(private readonly userRepoService: UserRepoService, private readonly forgetPassword: ForgetPasswordService) { }
 
   @ApiOkResponse({ type: UserResource })
   @Get('current')
@@ -64,5 +61,11 @@ export class UserController {
       { role, email },
       { offset, page },
     );
+  }
+
+  @ApiOkResponse({ description: 'Password reset link sent successfully' })
+  @Post('reset-password')
+  public async resetPassword() {
+    return this.forgetPassword.sendEmail("Rubi@gmail.com", 24);
   }
 }

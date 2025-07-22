@@ -8,7 +8,7 @@ import { UserRolesModel } from '../models/user-roles.model';
 import { SectionModel } from '../models/section.model';
 import { ClassModel } from '../models/class.model';
 import { SubjectModel } from '../models/subject.model';
-import { StudentClassSubjectModel } from '../models/student-class-subject.model';
+import { StudentProfileModel } from '../models/student.model';
 
 export const DefaultConnectionModels = [
   UserModel,
@@ -21,5 +21,5 @@ export const DefaultConnectionModels = [
   SectionModel,
   ClassModel,
   SubjectModel,
-  StudentClassSubjectModel
+  StudentProfileModel
 ];

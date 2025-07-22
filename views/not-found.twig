@@ -1,0 +1,20 @@
+{% extends './layouts/master.twig' %}
+
+{% block mainContent %}
+<div
+  style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: calc(100dvh - 16px);">
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h1 class="ff-montserrat"
+      style="font-size: calc(1.375rem + 1.04vw); color: rgb(51, 51, 51); font-weight: 600; margin-top: 0; margin-bottom: 8px;">
+      Page Doesn't Exist!</h1>
+    <p class="ff-montserrat"
+      style="color: rgb(138, 135, 135); font-size: calc(1.3rem + .4vw); margin-top: 0px; font-weight: 500;">
+      Sorry, the page you're looking for could not be found
+    </p>
+    <button class="bg-theme ff-montserrat btn-hover" style="border: none; padding: 7px 12px; border-radius: 5px;">
+      <a href={{ appHomeUrl }}
+        style="color: white; text-decoration: none; font-size: 16px; font-weight: 600; line-height: 1.5;">Home</a>
+    </button>
+  </div>
+</div>
+{% endblock %}

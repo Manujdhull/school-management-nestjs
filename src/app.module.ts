@@ -32,6 +32,7 @@ import { RegistrationModule } from './registration/registration.module';
 import { ClassesModule } from './classes/classes.module';
 import { SectionsModule } from './section/sections.module';
 import { SubjectsModule } from './subject/subjects.module';
+import { StudentEntitiesModule } from './student-profile/student-entities.module';
 
 @Module({
   imports: [
@@ -73,7 +74,8 @@ import { SubjectsModule } from './subject/subjects.module';
     UserModule,
     ClassesModule,
     SectionsModule,
-    SubjectsModule
+    SubjectsModule,
+    StudentEntitiesModule,
   ],
   controllers: [AppController],
   providers: [

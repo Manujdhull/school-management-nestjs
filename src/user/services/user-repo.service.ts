@@ -8,7 +8,11 @@ import { SequelizePagination } from '../../interfaces/sequelize-pagination.inter
 
 @Injectable()
 export class UserRepoService {
-  constructor(@InjectModel(UserModel) public userModel: typeof UserModel, protected hashService: HashEncryptService, public paginationService: PaginateService) { }
+  constructor(
+    @InjectModel(UserModel) public userModel: typeof UserModel,
+    protected hashService: HashEncryptService,
+    public paginationService: PaginateService,
+  ) { }
 
   /**
    * Find by email or returns null when not found

@@ -15,4 +15,4 @@ import { MailService } from './services/mail/mail.service';
   providers: [MailConfigService, ConfigService, MailService],
   exports: [MailService],
 })
-export class MailModule {}
+export class MailModule { }

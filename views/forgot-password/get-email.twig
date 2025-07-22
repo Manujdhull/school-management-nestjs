@@ -1,0 +1,28 @@
+{% extends '../authorization/authorization-layout.twig' %}
+
+{% block appTitle %}
+  Forgot Password
+{% endblock %}
+
+{% block headerMessage %}
+  Login to continue using Trusted Leader 360&deg;
+{% endblock %}
+
+{% block authorizationContent %}
+
+  <div class="login-form w-100">
+    {% include '../partials/validationErrors.twig' %}
+    <h1 class="mb-3">Forgot Password</h1>
+    <h6 class="fw-light text-secondary mb-4 mb-md-5 ff-montserrat">Please enter the email address connected with your account</h6>
+    <form action="{{ url('forgot-password') }}" method="POST">
+      <div class="form-group mb-3">
+        <label for="email" class="form-label h5 fs-6 fw-normal">Email*</label>
+        <input type="email" inputmode="email" name="email" autocomplete="on" class="form-control" id="email" required>
+      </div>
+      <div class="form-group mt-4 mt-md-5">
+        <button class="btn btn-primary bg-theme btn-lg w-100" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

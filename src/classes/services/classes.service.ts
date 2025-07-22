@@ -29,7 +29,7 @@ export class ClassesService {
    * fetching classs with the id
    * @param id 
    */
-  findOne(id: number): Promise<ClassModel | null> {
+  public findOne(id: number): Promise<ClassModel | null> {
     return this.classModel.findByPk(id, { rejectOnEmpty: true });
   }
 }

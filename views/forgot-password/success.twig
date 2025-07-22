@@ -1,0 +1,13 @@
+{% extends '../authorization/authorization-layout.twig' %}
+
+{% block appTitle %}
+Password Reset
+{% endblock %}
+
+{% block headerMessage %}
+Password Reset Successfully
+{% endblock %}
+
+{% block authorizationContent %}
+<p>Your password was reset successfully. You can continue to <a href="{{ frontendAppUrl }}/login">Log in</a></p>
+{% endblock %}

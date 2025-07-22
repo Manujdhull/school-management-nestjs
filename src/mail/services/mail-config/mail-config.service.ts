@@ -6,7 +6,7 @@ import MailMessage = require('nodemailer/lib/mailer/mail-message');
 
 @Injectable()
 export class MailConfigService implements MailerOptionsFactory {
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService) { }
 
   /**
    * @inheritDoc

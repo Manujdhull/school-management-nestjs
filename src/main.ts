@@ -30,9 +30,20 @@ import { RedirectFromLoginFilter } from './session-manager/filters/redirect-to-l
 import { SetupIntendInterceptor } from './session-manager/interceptors/setup-intend/setup-intend.interceptor';
 import { KillForApiInterceptor } from './session-manager/interceptors/kill-for-api/kill-for-api.interceptor';
 import { registerApplicationContext } from './common/application-context';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {});
+
+  // app.connectMicroservice<MicroserviceOptions>({
+  //   transport: Transport.RMQ,
+  //   options: {
+  //     urls: ['amqp://localhost:5672'],
+  //     queue: 'school_queue',
+  //     queueOptions: { durable: true },
+  //   }
+  // });
+
   app.useLogger(app.get<LoggingService>(LoggingService));
   registerApplicationContext(app);
 

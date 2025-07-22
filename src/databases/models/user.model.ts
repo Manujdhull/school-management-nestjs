@@ -1,9 +1,8 @@
-import { BelongsTo, BelongsToMany, Column, DataType, DefaultScope, HasMany, Scopes, Table, Unique } from 'sequelize-typescript';
+import { BelongsToMany, Column, DataType, DefaultScope, HasMany, Scopes, Table, Unique } from 'sequelize-typescript';
 import { BaseModel } from './base.model';
 import { UserRolesModel } from './user-roles.model';
-import { RoleModel, RoleTypeNames } from './role.model';
-import { FindOptions, Sequelize } from 'sequelize';
-import { filter } from 'rxjs';
+import { RoleModel } from './role.model';
+import { FindOptions } from 'sequelize';
 import { Op } from 'sequelize';
 
 export interface UserListingFilters {
@@ -34,15 +33,6 @@ export interface UserListingFilters {
     }
     return query;
   },
-  // withEmail: (filters: UserListingFilters): FindOptions<UserModel> => {
-  //   const query: FindOptions<UserModel> = {};
-  //   if (!!filters.email && filters.email.length > 0) {
-  //     query.where = {
-  //       email: { [Op.like]: `%${filters.email}%` },
-  //     }
-  //   }
-  //   return query;
-  // },
 }))
 @Table({ tableName: 'users' })
 export class UserModel extends BaseModel<UserModel> {

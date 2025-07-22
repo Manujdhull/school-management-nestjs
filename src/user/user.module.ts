@@ -5,11 +5,12 @@ import { VerifyClientCredentialsValidator } from './validators/verify-client-cre
 import { RoleService } from '../roles/services/role.service';
 import { RolesModule } from '../roles/roles.module';
 import { UserController } from './controllers/user/user.controller';
+import { ForgetPasswordService } from './services/forget-password/forget-password.service';
 
 @Module({
   imports: [RolesModule],
-  providers: [UserRepoService, UniqueEmailValidator, VerifyClientCredentialsValidator],
+  providers: [UserRepoService, UniqueEmailValidator, VerifyClientCredentialsValidator, ForgetPasswordService],
   controllers: [UserController],
-  exports: [UserRepoService],
+  exports: [UserRepoService, ForgetPasswordService],
 })
 export class UserModule { }

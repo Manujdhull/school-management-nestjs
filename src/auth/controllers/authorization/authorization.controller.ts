@@ -26,7 +26,7 @@ import { Transaction } from 'sequelize';
 import { GrantTypes } from '../../grant-types/grant-type-implementation';
 import { HashEncryptService } from '../../services/hash-encrypt/hash-encrypt.service';
 import { AuthorizationChallengeRepoService } from '../../services/authorization-challenge-repo/authorization-challenge-repo.service';
-import { ApiExcludeController } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { PasswordDto } from '../../dtos/password.dto';
 import { randomUUID } from 'node:crypto';
 import { PasswordRedirector } from '../../redirections/password/password.redirector';
@@ -37,14 +37,13 @@ import { RestartLoginRedirector } from '../../redirectors/restart-login/restart-
 import { AppendFormActionHeaderInterceptor } from '../../interceptors/append-form-action-header/append-form-action-header.interceptor';
 import { AuthorizationChallengeModel } from '../../../databases/models/oauth/authorization-challenge.model';
 import { MapUserToSessionInterceptor } from '../../interceptors/map-user-to-session/map-user-to-session.interceptor';
-
-@ApiExcludeController()
+@ApiTags('Authorization Management')
 @Controller('oauth/authorization')
 export class AuthorizationController {
   constructor(
     protected readonly hashEncrypt: HashEncryptService,
     protected readonly authorizationChallengeRepo: AuthorizationChallengeRepoService,
-  ) {}
+  ) { }
 
   @UseInterceptors(SessionErrorValidationInterceptor, OldInputsInterceptor)
   @Render('authorization/login')
@@ -53,9 +52,11 @@ export class AuthorizationController {
     messageBefore: 'Starting Authorization server with entry login flow',
   })
   public async showLogin(@Query() grantContent: AuthorizationDto) {
-    return {
+    const data = {
       token: await this.hashEncrypt.encrypt(JSON.stringify(grantContent)),
     };
+    console.log(data);
+    return data;
   }
 
   @RedirectGenerator(PasswordRedirector)
