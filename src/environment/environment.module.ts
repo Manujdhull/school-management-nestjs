@@ -10,6 +10,8 @@ import { jwtConfig } from './configs/jwt';
 import { viewConfig } from './configs/view';
 import { filesystemConfig } from './configs/filesystemConfig';
 import { corsConfig } from './configs/cors';
+import { inviterEmailsConfig } from './configs/inviterEmailsConfig';
+import { frontendAppConfig } from './configs/frontendAppConfig';
 
 const envSuffix = !!process.env.OVERRIDE_ENV
   ? `.${process.env.OVERRIDE_ENV}`
@@ -30,6 +32,8 @@ const envFileName = getEnvFileName(envSuffix);
         viewConfig,
         filesystemConfig,
         corsConfig,
+        inviterEmailsConfig,
+        frontendAppConfig,
       ],
       envFilePath: envFileName,
       isGlobal: true,
@@ -38,4 +42,4 @@ const envFileName = getEnvFileName(envSuffix);
   providers: [ConfigService],
   exports: [ConfigService],
 })
-export class EnvironmentModule {}
+export class EnvironmentModule { }

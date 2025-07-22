@@ -1,5 +1,4 @@
 import { ValidationArguments, ValidatorConstraint } from "class-validator";
-import { RoleTypeNames } from "../../databases/models/role.model";
 import { BaseValidator, ValidatorDecorator } from "../../helpers/base-validator/base-validator";
 import { RoleService } from "../../roles/services/role.service";
 import { Injectable } from "@nestjs/common";

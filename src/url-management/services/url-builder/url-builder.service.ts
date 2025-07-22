@@ -36,6 +36,7 @@ export class UrlBuilderService {
     );
 
     this.appendQueryParams(options.queryParameters, url);
+    console.log(url);
 
     return url.toString();
   }

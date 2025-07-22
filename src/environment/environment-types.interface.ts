@@ -62,3 +62,13 @@ export interface FilesystemConfig {
 export interface CorsConfig {
   origins: string[];
 }
+
+export interface InviterEmailsConfig {
+  principleEmail: string;
+  teacherEmail: string;
+  classId: number;
+}
+
+export interface FrontendAppConfig {
+  url: string;
+}

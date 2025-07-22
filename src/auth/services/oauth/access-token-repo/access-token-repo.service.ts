@@ -109,4 +109,14 @@ export class AccessTokenRepoService {
       algorithm: 'RS256',
     });
   }
+
+  public async findByBearerToken(
+    bearerToken: string,
+  ): Promise<AccessTokenModel> {
+    return this.findOrFail(
+      await this.jwtService.verifyAsync<any>(bearerToken, {
+        algorithms: ['RS256'],
+      }),
+    );
+  }
 }

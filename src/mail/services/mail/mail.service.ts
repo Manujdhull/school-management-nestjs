@@ -7,6 +7,7 @@ import { join } from 'path';
 import { ViewConfig } from '../../../environment/environment-types.interface';
 import * as Twig from 'twig';
 import { RenderOptions } from 'twig';
+import { UserModel } from '../../../databases/models/user.model';
 
 @Injectable()
 export class MailService {
@@ -14,19 +15,32 @@ export class MailService {
     @Inject(VIEW_RENDER_ENGINE) private twig: typeof Twig,
     private mailer: MailerService,
     private configService: ConfigService,
-  ) {}
+  ) { }
 
   /**
    * Sends mail by compiling the template and sending it as body
    * @param sendMailOptions
    */
   public async sendMail(sendMailOptions: ISendMailOptions) {
+    console.log("Hello from mail service");
+
     sendMailOptions.html = await this.fileContent(
       sendMailOptions.template,
       sendMailOptions.context,
     );
     sendMailOptions.template = undefined;
     return this.mailer.sendMail(sendMailOptions);
+  }
+
+  public async sendWelcomeEmail(user: UserModel) {
+    return this.sendMail({
+      to: user.email,
+      subject: 'Welcome to the School Management System',
+      template: 'emails/welcome',
+      context: {
+        user,
+      },
+    });
   }
 
   /**

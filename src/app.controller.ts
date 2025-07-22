@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { ApiExcludeController } from '@nestjs/swagger';
 
 @ApiExcludeController()
-@Controller()
+@Controller('hi')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

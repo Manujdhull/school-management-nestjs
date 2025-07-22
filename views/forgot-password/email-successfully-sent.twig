@@ -1,0 +1,27 @@
+{% extends '../authorization/authorization-layout.twig' %}
+
+{% block appTitle %}
+  Forgot Password
+{% endblock %}
+
+{% block headerMessage %}
+  Email Sent
+{% endblock %}
+
+{% block authorizationContent %}
+
+  <div class="login-form w-100">
+    <p>We sent an email to {{ email }} with a link to reset your password.</p>
+    <form action="{{ url('reset-email/resend') }}" method="POST">
+      <div class="form-group mt-4 mt-md-5">
+        <button class="btn btn-primary bg-theme btn-lg w-100" type="submit">Resend Email</button>
+      </div>
+    </form>
+    <div class="mt-4 mt-md-5">
+      <a href={{ frontendAppUrl }}>
+        <button class="btn btn-primary bg-theme btn-lg w-100">Back to Home</button>
+      </a>
+    </div>
+  </div>
+
+{% endblock %}
